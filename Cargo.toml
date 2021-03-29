@@ -17,6 +17,12 @@ A library to acquire a stack trace (backtrace) at runtime in a no-std Rust progr
 
 [dependencies]
 cfg-if = "0.1"
-x86 = "0.32.0"
 log = "0.4"
-addr2line = { git = "https://github.com/gz/addr2line.git", branch = "patch-1", default-features = false, features = ["alloc", "rustc-demangle"] }
+addr2line = { path="../addr2line", default-features = false, features = ["alloc", "rustc-demangle"] }
+#addr2line =  { version = "0.14.1", default-features = false, features = ["alloc", "rustc-demangle"] }
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+cortex-a = { path = "../cortex-a" }
+
+[target.'cfg(target_arch = "riscv64")'.dependencies]
+riscv = { git = "https://github.com/tonnylyz/riscv" }
