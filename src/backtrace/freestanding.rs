@@ -52,9 +52,18 @@ pub fn trace_from(mut curframe: Frame, cb: &mut dyn FnMut(&super::Frame) -> bool
 }
 
 #[inline(always)]
+#[cfg(target_arch = "aarch64")]
 pub fn trace(cb: &mut dyn FnMut(&super::Frame) -> bool) {
     use cortex_a::regs::*;
 
     let curframe = Frame::new(FP.get(), SP.get(), PC.get(), LR.get());
+    trace_from(curframe.clone(), cb);
+}
+
+#[inline(always)]
+#[cfg(target_arch = "riscv64")]
+pub fn trace(cb: &mut dyn FnMut(&super::Frame) -> bool) {
+
+    let curframe = Frame::new(0, 0, 0, 0);
     trace_from(curframe.clone(), cb);
 }

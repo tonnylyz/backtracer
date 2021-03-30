@@ -5,6 +5,8 @@ extern crate addr2line;
 extern crate alloc;
 extern crate cfg_if;
 extern crate log;
+
+#[cfg(target_arch = "aarch64")]
 extern crate cortex_a;
 
 pub use backtrace::{trace, trace_from, EntryPoint, Frame};
