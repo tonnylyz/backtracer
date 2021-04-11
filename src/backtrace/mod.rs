@@ -70,6 +70,10 @@ impl Frame {
         self.inner.ip()
     }
 
+    pub fn fp(&self) -> usize { self.inner.fp as usize }
+    pub fn sp(&self) -> usize { self.inner.sp as usize }
+    pub fn pc(&self) -> usize { self.inner.pc as usize }
+    pub fn lr(&self) -> usize { self.inner.lr as usize }
     /// Returns the starting symbol address of the frame of this function.
     ///
     /// This will attempt to rewind the instruction pointer returned by `ip` to

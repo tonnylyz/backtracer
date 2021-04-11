@@ -25,4 +25,4 @@ addr2line = { path="../addr2line", default-features = false, features = ["alloc"
 cortex-a = { path = "../cortex-a" }
 
 [target.'cfg(target_arch = "riscv64")'.dependencies]
-riscv = { git = "https://github.com/tonnylyz/riscv" }
+riscv = { path = "../riscv" }
